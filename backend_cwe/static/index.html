@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CWE · Panel visual del backend</title>
+  <style>
+    :root {
+      --bg: #0A0E17; --surface: #161B22; --border: #30363D;
+      --cyan: #00F0FF; --blue: #0077FF; --fresh: #69F0AE; --text: #e6edf3;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; font-family: Segoe UI, system-ui, sans-serif;
+      background: var(--bg); color: var(--text); padding: 24px;
+    }
+    h1 { text-align: center; }
+    h1 .cwe {
+      background: linear-gradient(90deg, var(--cyan), var(--blue));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      font-weight: 800; letter-spacing: 2px;
+    }
+    .sub { text-align: center; color: #8b949e; margin-top: -8px; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 1000px; margin: 24px auto; }
+    @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+    .card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 20px;
+    }
+    .card h2 { margin-top: 0; font-size: 18px; }
+    label { display: block; font-size: 13px; color: #8b949e; margin: 10px 0 4px; }
+    input, select {
+      width: 100%; padding: 10px 12px; border-radius: 10px;
+      border: 1px solid var(--border); background: #0d1117; color: var(--text); font-size: 14px;
+    }
+    input:focus, select:focus { outline: none; border-color: var(--cyan); }
+    button {
+      margin-top: 16px; width: 100%; padding: 12px; border: none; border-radius: 10px;
+      background: var(--cyan); color: #000; font-weight: 700; font-size: 15px; cursor: pointer;
+    }
+    button:hover { filter: brightness(1.1); }
+    .msg { margin-top: 12px; font-size: 13px; min-height: 18px; }
+    .ok { color: var(--fresh); }
+    .err { color: #ff7b72; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 13px; }
+    th, td { text-align: left; padding: 8px; border-bottom: 1px solid var(--border); }
+    th { color: var(--cyan); }
+    .refresh { background: transparent; border: 1px solid var(--border); color: var(--cyan); width: auto; padding: 6px 14px; margin: 0; float: right; font-size: 12px; }
+    .list-card { max-width: 1000px; margin: 0 auto 20px; }
+    .pill { font-size: 11px; padding: 2px 8px; border-radius: 20px; background: rgba(0,240,255,.15); color: var(--cyan); }
+  </style>
+</head>
+<body>
+  <h1><span class="cwe">CWE</span> · Panel visual del backend</h1>
+  <p class="sub">Crea y consulta usuarios y productos sin escribir código </p>
+
+  <div class="grid">
+    <!-- Crear usuario -->
+    <div class="card">
+      <h2>➕ Crear usuario</h2>
+      <label>Nombre</label>
+      <input id="u_nombre" placeholder="Ej: Campo Fresco" />
+      <label>Correo electrónico</label>
+      <input id="u_email" type="email" placeholder="Ej: campo@cwe.com" />
+      <label>Contraseña</label>
+      <input id="u_password" type="password" placeholder="••••••" />
+      <label>Tipo de usuario</label>
+      <select id="u_tipo">
+        <option value="consumidor">Consumidor (comprador)</option>
+        <option value="productor">Productor (vendedor)</option>
+      </select>
+      <button onclick="crearUsuario()">Guardar usuario</button>
+      <div id="u_msg" class="msg"></div>
+    </div>
+
+    <!-- Crear producto -->
+    <div class="card">
+      <h2>➕ Crear producto</h2>
+      <label>Nombre</label>
+      <input id="p_nombre" placeholder="Ej: Lulo" />
+      <label>Descripción (opcional)</label>
+      <input id="p_desc" placeholder="Ej: Fruta fresca del campo" />
+      <label>Precio (COP)</label>
+      <input id="p_precio" type="number" placeholder="Ej: 8900" />
+      <label>Stock</label>
+      <input id="p_stock" type="number" placeholder="Ej: 20" />
+      <label>Unidad de medida</label>
+      <input id="p_unidad" placeholder="Ej: kg, libra, unidad" />
+      <label>ID del productor (usuario que lo vende)</label>
+      <input id="p_usuario" type="number" placeholder="Ej: 1" />
+      <button onclick="crearProducto()">Guardar producto</button>
+      <div id="p_msg" class="msg"></div>
+    </div>
+  </div>
+
+  <!-- Listado usuarios -->
+  <div class="card list-card">
+    <button class="refresh" onclick="cargarUsuarios()">↻ Actualizar</button>
+    <h2> Usuarios registrados</h2>
+    <table>
+      <thead><tr><th>ID</th><th>Nombre</th><th>Email</th><th>Tipo</th></tr></thead>
+      <tbody id="tabla_usuarios"></tbody>
+    </table>
+  </div>
+
+  <!-- Listado productos -->
+  <div class="card list-card">
+    <button class="refresh" onclick="cargarProductos()">↻ Actualizar</button>
+    <h2> Productos publicados</h2>
+    <table>
+      <thead><tr><th>ID</th><th>Nombre</th><th>Precio</th><th>Stock</th><th>Unidad</th><th>Productor</th></tr></thead>
+      <tbody id="tabla_productos"></tbody>
+    </table>
+  </div>
+
+  <script>
+    const API = ""; // mismo origen que sirve esta pagina
+
+    async function crearUsuario() {
+      const msg = document.getElementById("u_msg");
+      msg.textContent = "Guardando..."; msg.className = "msg";
+      try {
+        const r = await fetch(API + "/usuarios/", {
+          method: "POST", headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            nombre: val("u_nombre"), email: val("u_email"),
+            password: val("u_password"), tipo_usuario: val("u_tipo"),
+          }),
+        });
+        const data = await r.json();
+        if (r.ok) {
+          msg.textContent = "✓ Usuario creado con ID " + data.id; msg.className = "msg ok";
+          clear(["u_nombre", "u_email", "u_password"]);
+          cargarUsuarios();
+        } else {
+          msg.textContent = "✗ " + (data.detail || "Error"); msg.className = "msg err";
+        }
+      } catch (e) { msg.textContent = "✗ No se pudo conectar al servidor"; msg.className = "msg err"; }
+    }
+
+    async function crearProducto() {
+      const msg = document.getElementById("p_msg");
+      msg.textContent = "Guardando..."; msg.className = "msg";
+      try {
+        const r = await fetch(API + "/productos/", {
+          method: "POST", headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            nombre: val("p_nombre"),
+            descripcion: val("p_desc") || null,
+            precio: parseFloat(val("p_precio")),
+            stock: parseInt(val("p_stock")),
+            unidad_medida: val("p_unidad"),
+            usuario_id: parseInt(val("p_usuario")),
+          }),
+        });
+        const data = await r.json();
+        if (r.ok) {
+          msg.textContent = "✓ Producto creado con ID " + data.id; msg.className = "msg ok";
+          clear(["p_nombre", "p_desc", "p_precio", "p_stock", "p_unidad"]);
+          cargarProductos();
+        } else {
+          msg.textContent = "✗ " + (data.detail || "Error"); msg.className = "msg err";
+        }
+      } catch (e) { msg.textContent = "✗ No se pudo conectar al servidor"; msg.className = "msg err"; }
+    }
+
+    async function cargarUsuarios() {
+      const t = document.getElementById("tabla_usuarios");
+      const r = await fetch(API + "/usuarios/"); const data = await r.json();
+      t.innerHTML = data.map(u =>
+        `<tr><td>${u.id}</td><td>${u.nombre}</td><td>${u.email}</td><td><span class="pill">${u.tipo_usuario}</span></td></tr>`
+      ).join("") || `<tr><td colspan="4" style="color:#8b949e">Aún no hay usuarios</td></tr>`;
+    }
+
+    async function cargarProductos() {
+      const t = document.getElementById("tabla_productos");
+      const r = await fetch(API + "/productos/"); const data = await r.json();
+      t.innerHTML = data.map(p =>
+        `<tr><td>${p.id}</td><td>${p.nombre}</td><td>$${p.precio.toLocaleString("es-CO")}</td><td>${p.stock}</td><td>${p.unidad_medida}</td><td>${p.usuario_id}</td></tr>`
+      ).join("") || `<tr><td colspan="6" style="color:#8b949e">Aún no hay productos</td></tr>`;
+    }
+
+    function val(id) { return document.getElementById(id).value.trim(); }
+    function clear(ids) { ids.forEach(id => document.getElementById(id).value = ""); }
+
+    // Cargar listas al abrir
+    cargarUsuarios();
+    cargarProductos();
+  </script>
+</body>
+</html>

@@ -35,6 +35,9 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
 
+  # Para hacer peticiones HTTP al backend (login y registro).
+  http: ^1.2.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -45,6 +48,21 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^6.0.0
+
+  # Genera el ícono de la app (Android/iOS) a partir de una sola imagen.
+  flutter_launcher_icons: ^0.14.1
+
+# Configuración del ícono de la app. Para generarlo:
+#   flutter pub get
+#   dart run flutter_launcher_icons
+flutter_launcher_icons:
+  android: true
+  ios: true
+  # Imagen base del ícono (minimalista cuadrada, 1024x1024 px recomendado).
+  image_path: "assets/images/logo_app.png"
+  # Fondo y primer plano para el ícono adaptable de Android (Android 8+).
+  adaptive_icon_background: "#0A0E17"
+  adaptive_icon_foreground: "assets/images/logo_app.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -60,6 +78,19 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/fonts/
+
+  # Fuente personalizada del proyecto va
+  # en assets/fonts/ con los nombres exactos de los archivos .ttf
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Regular.ttf
+        - asset: assets/fonts/Poppins-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Poppins-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Poppins-Bold.ttf
+          weight: 700
 
   # To add assets to your application, add an assets section, like this:
   # assets:

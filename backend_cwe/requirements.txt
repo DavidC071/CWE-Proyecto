@@ -1,0 +1,7 @@
+# Dependencias del backend CWE (FastAPI + SQLAlchemy + SQLite)
+# Instalar con:  pip install -r requirements.txt
+
+fastapi
+uvicorn[standard]
+sqlalchemy
+pydantic[email]

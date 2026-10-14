@@ -7,8 +7,8 @@ import 'login_screen.dart';
 import 'orders_tab.dart';
 import 'profile_tab.dart';
 
-// Pantalla principal: contiene la barra de navegación inferior y el estado
-// del carrito y los pedidos. Cada pestaña es un archivo aparte.
+// Pantalla principal que contiene la barra de navegación inferior y el estado
+// del carrito y los pedidos, cada pestaña es un archivo aparte.
 
 class CatalogScreen extends StatefulWidget {
   final String userName;

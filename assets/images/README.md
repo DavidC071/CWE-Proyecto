@@ -17,11 +17,18 @@ nombre exacto que aparece en `lib/data/products_data.dart` (campo `image`).
 > ícono de `assets/icons/` y, si tampoco está, un emoji según la categoría.
 > Por eso la app nunca se ve rota aunque falten imágenes.
 
-## Logo
+## Logos de la marca (los 3 que definimos)
 
-- `logo_cwe.png` → logo de la Figura 6 del documento (se muestra en el login y
-  en la cabecera de Inicio). Si no lo pones, se muestra el texto "CWE" con
-  degradado neón.
+
+# Importante: el icono de la app (`logo_app.png`) es un paso aparte
+Poner `logo_app.png` en esta carpeta NO cambia solo el icono que se ve al
+instalar la app. Para eso hay que generar los iconos de Android. La forma fácil:
+
+1. Agrega al `pubspec.yaml` (en dev_dependencies) el paquete:
+   `flutter_launcher_icons`
+2. Crea la configuración apuntando a `assets/images/logo_app.png`.
+3. Ejecuta: `dart run flutter_launcher_icons`
+
 
 ## Nombres de archivo esperados (uno por producto)
 

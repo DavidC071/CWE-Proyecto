@@ -1,18 +1,13 @@
 import '../models/product.dart';
 
-/// Catálogo de ejemplo del prototipo CWE (Conecta con la Tierra).
-/// Más adelante esta lista vendrá del backend.
+/// Catálogo de ejemplo del prototipo CWE.
+/// (Más adelantese busca implementar esta lista en el backend)
 ///
-/// Para que la FOTO real de un producto aparezca:
-///   1. Coloca el archivo en assets/images/ con el nombre indicado en `image`.
-///      Ej: assets/images/lulo.png
-///   2. Si no agregas la foto, la tarjeta muestra automáticamente el ícono/emoji
-///      de la categoría, así que la app nunca se ve rota.
-///
-/// Categorías disponibles (se usan en el filtro):
-///   Frutas · Verduras · Hortalizas · Tubérculos · Hierbas
+///Si se agrega la foto, la tarjeta muestra automáticamente el ícono/emoji
+///de la categoría, así que la app nunca se ve rota.
+
 const List<Product> sampleProducts = [
-  // ---------------------------------------------------------------- FRUTAS
+  // FRUTAS
   Product(name: 'Lulo', price: 8900, provider: 'Farmáltor', category: 'Frutas', image: 'assets/images/lulo.png'),
   Product(name: 'Maracuyá', price: 8900, provider: 'Farmáltor', category: 'Frutas', image: 'assets/images/maracuya.png'),
   Product(name: 'Aguacate Hass', price: 12900, provider: 'Supermercado', category: 'Frutas', image: 'assets/images/aguacate_hass.png'),
@@ -38,7 +33,7 @@ const List<Product> sampleProducts = [
   Product(name: 'Guayaba', price: 4300, provider: 'Farmáltor', category: 'Frutas', image: 'assets/images/guayaba.png'),
   Product(name: 'Coco', price: 5500, provider: 'Campo Fresco', category: 'Frutas', unit: 'un', image: 'assets/images/coco.png'),
 
-  // -------------------------------------------------------------- VERDURAS
+  // VERDURAS
   Product(name: 'Lechuga', price: 2800, provider: 'Campo Fresco', category: 'Verduras', unit: 'un', image: 'assets/images/lechuga.png'),
   Product(name: 'Espinaca', price: 4200, provider: 'Farmáltor', category: 'Verduras', image: 'assets/images/espinaca.png'),
   Product(name: 'Acelga', price: 3800, provider: 'Campo Fresco', category: 'Verduras', image: 'assets/images/ecelga.png'),
@@ -50,7 +45,7 @@ const List<Product> sampleProducts = [
   Product(name: 'Calabacín', price: 4600, provider: 'Supermercado', category: 'Verduras', image: 'assets/images/calabacin.png'),
   Product(name: 'Berenjena', price: 5100, provider: 'Farmáltor', category: 'Verduras', image: 'assets/images/berenjena.png'),
 
-  // ------------------------------------------------------------ HORTALIZAS
+  // HORTALIZAS
   Product(name: 'Tomate', price: 4100, provider: 'Campo Fresco', category: 'Hortalizas', image: 'assets/images/tomate.png'),
   Product(name: 'Cebolla cabezona', price: 3800, provider: 'Farmáltor', category: 'Hortalizas', image: 'assets/images/cebolla_cabezona.png'),
   Product(name: 'Cebolla larga', price: 3200, provider: 'Campo Fresco', category: 'Hortalizas', image: 'assets/images/cebolla_larga.webp'),
@@ -62,7 +57,7 @@ const List<Product> sampleProducts = [
   Product(name: 'Arveja', price: 7800, provider: 'Campo Fresco', category: 'Hortalizas', image: 'assets/images/arveja.png'),
   Product(name: 'Mazorca', price: 2500, provider: 'Campo Fresco', category: 'Hortalizas', unit: 'un', image: 'assets/images/mazorca.png'),
 
-  // ------------------------------------------------------------ TUBÉRCULOS
+  // TUBÉRCULOS
   Product(name: 'Yuca', price: 2800, provider: 'Supermercado', category: 'Tubérculos', image: 'assets/images/yuca.png'),
   Product(name: 'Arracacha', price: 4200, provider: 'Farmáltor', category: 'Tubérculos', image: 'assets/images/arracacha.png'),
   Product(name: 'Papa pastusa', price: 2600, provider: 'Campo Fresco', category: 'Tubérculos', image: 'assets/images/papa_pastusa.png'),
@@ -72,7 +67,7 @@ const List<Product> sampleProducts = [
   Product(name: 'Plátano verde', price: 3500, provider: 'Farmáltor', category: 'Tubérculos', unit: 'un', image: 'assets/images/platano_verde.png'),
   Product(name: 'Ulluco', price: 5200, provider: 'Campo Fresco', category: 'Tubérculos', image: 'assets/images/olluco.webp'),
 
-  // --------------------------------------------------------------- HIERBAS
+  // HIERBAS
   Product(name: 'Cilantro', price: 1500, provider: 'Campo Fresco', category: 'Hierbas', unit: 'manojo', image: 'assets/images/cilantro.png'),
   Product(name: 'Perejil', price: 1500, provider: 'Farmáltor', category: 'Hierbas', unit: 'manojo', image: 'assets/images/perejil.webp'),
   Product(name: 'Hierbabuena', price: 1800, provider: 'Campo Fresco', category: 'Hierbas', unit: 'manojo', image: 'assets/images/hierbabuena.png'),

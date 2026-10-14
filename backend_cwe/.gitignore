@@ -1,0 +1,15 @@
+# Entorno virtual de Python
+venv/
+.venv/
+env/
+
+# Caché de Python
+__pycache__/
+*.pyc
+
+# Base de datos local de SQLite (se genera sola al correr; NO se sube)
+*.db
+cwe.db
+
+# Logs
+*.log

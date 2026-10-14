@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import '../services/api_service.dart';
 import '../theme/app_colors.dart';
 import '../widgets/cwe_logo.dart';
 import 'catalog_screen.dart';
+import 'register_screen.dart';
 
-// Pantalla de Login. Valida que usuario y contraseña no estén vacíos
-// antes de entrar al catálogo (corrección del error E-05).
+// Pantalla de Login que valida el correo y la contraseña contra el backend;
+// solo entra quien tiene una cuenta registrada en la base de datos.
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -17,6 +19,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final _userController = TextEditingController();
   final _passController = TextEditingController();
   bool _obscure = true;
+  bool _loading = false;
   String? _userError;
   String? _passError;
 
@@ -27,18 +30,41 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
-  void _login() {
+  Future<void> _login() async {
     final user = _userController.text.trim();
     final pass = _passController.text;
     setState(() {
-      _userError = user.isEmpty ? 'Ingresa tu usuario o correo' : null;
+      _userError = user.isEmpty ? 'Ingresa tu correo' : null;
       _passError = pass.isEmpty ? 'Ingresa tu contraseña' : null;
     });
     if (_userError != null || _passError != null) return;
 
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (_) => CatalogScreen(userName: user)),
+    setState(() => _loading = true);
+    try {
+      // Llama al backend y si las credenciales son correctas, devuelve el usuario.
+      final usuario = await ApiService.login(email: user, password: pass);
+      if (!mounted) return;
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (_) => CatalogScreen(userName: usuario['nombre'] ?? user),
+        ),
+      );
+    } on ApiException catch (e) {
+      if (!mounted) return;
+      _mostrarError(e.mensaje);
+    } finally {
+      if (mounted) setState(() => _loading = false);
+    }
+  }
+
+  void _mostrarError(String texto) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(texto),
+        backgroundColor: Colors.red.shade800,
+        behavior: SnackBarBehavior.floating,
+      ),
     );
   }
 
@@ -82,15 +108,13 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const SizedBox(height: 30),
-                  // Logotipo (Figura 6). Si el archivo aún no existe, no se muestra.
-                  Image.asset(
-                    'assets/images/logo_cwe.png',
-                    height: 120,
-                    errorBuilder: (context, error, stackTrace) =>
-                        const SizedBox.shrink(),
+                  const SizedBox(height: 20),
+                  // Logo principal, fundido con el fondo oscuro.
+                  const BrandLogo(
+                    asset: 'assets/images/logo_registro.png',
+                    height: 170,
+                    fallbackFontSize: 56,
                   ),
-                  const CweLogo(fontSize: 56, letterSpacing: 4),
                   const SizedBox(height: 8),
                   const Text(
                     'Conecta con la tierra',
@@ -108,8 +132,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     textInputAction: TextInputAction.next,
                     style: const TextStyle(color: Colors.white),
                     decoration: _decoration(
-                      label: 'Usuario o correo electrónico',
-                      icon: Icons.person_outline,
+                      label: 'Correo electrónico',
+                      icon: Icons.email_outlined,
                       errorText: _userError,
                     ),
                   ),
@@ -148,16 +172,54 @@ class _LoginScreenState extends State<LoginScreen> {
                         elevation: 8,
                         shadowColor: AppColors.cyan.withValues(alpha: 0.5),
                       ),
-                      onPressed: _login,
-                      child: const Text(
-                        'Iniciar Sesión',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 1,
+                      onPressed: _loading ? null : _login,
+                      child: _loading
+                          ? const SizedBox(
+                              height: 22,
+                              width: 22,
+                              child: CircularProgressIndicator(
+                                color: Colors.black,
+                                strokeWidth: 2.5,
+                              ),
+                            )
+                          : const Text(
+                              'Iniciar Sesión',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                letterSpacing: 1,
+                              ),
+                            ),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+
+                  // Enlace a la pantalla de registro.
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        '¿No tienes cuenta?',
+                        style: TextStyle(color: Colors.white60),
+                      ),
+                      TextButton(
+                        onPressed: _loading
+                            ? null
+                            : () => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) => const RegisterScreen(),
+                                  ),
+                                ),
+                        child: const Text(
+                          'Regístrate',
+                          style: TextStyle(
+                            color: AppColors.cyan,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
-                    ),
+                    ],
                   ),
                 ],
               ),

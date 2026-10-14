@@ -3,7 +3,7 @@ import '../models/product.dart';
 import '../theme/app_colors.dart';
 import '../widgets/product_card.dart';
 
-// Pestaña Mercado: "Revisar compra" (mockup 2 de la Figura 5).
+// Pestaña Mercado (mockup 2 de la Figura 5).
 
 class CartTab extends StatelessWidget {
   final Map<Product, int> cart;

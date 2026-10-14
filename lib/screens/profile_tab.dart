@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../theme/app_colors.dart';
 
-// Pestaña Perfil: datos básicos y cierre de sesión.
+// Pestaña Perfil, datos básicos y cierre de sesión.
 
 class ProfileTab extends StatelessWidget {
   final String userName;

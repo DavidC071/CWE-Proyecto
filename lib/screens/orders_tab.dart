@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/product.dart';
 import '../theme/app_colors.dart';
 
-// Pestaña Mis Pedidos: historial de pedidos confirmados en esta sesión.
+// Pestaña Mis Pedidos un historial de pedidos confirmados en esta sesión.
 
 class OrdersTab extends StatelessWidget {
   final List<Order> orders;

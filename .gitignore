@@ -46,3 +46,14 @@ app.*.map.json
 
 # Widget Preview related
 .widget_preview/
+
+# ----------------------------------------------------------------------------
+# Python / backend (entornos virtuales, cache y base de datos local)
+# Esto evita subir el venv sin importar si se crea en la raiz o en backend_cwe.
+# ----------------------------------------------------------------------------
+venv/
+.venv/
+env/
+__pycache__/
+*.pyc
+*.db

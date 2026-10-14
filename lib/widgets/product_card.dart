@@ -20,14 +20,14 @@ class ProductImage extends StatelessWidget {
       ),
     );
 
-    // 2) Intenta el ícono generado por nombre en assets/icons/.
+    // Intenta el ícono generado por nombre en assets/icons/.
     Widget tryIcon() => Image.asset(
           product.autoIconPath,
           fit: BoxFit.contain,
           errorBuilder: (context, error, stackTrace) => emojiFallback,
         );
 
-    // 1) Intenta la foto real en assets/images/.
+    // Intenta la foto real en assets/images/.
     final child = product.image == null
         ? tryIcon()
         : Image.asset(

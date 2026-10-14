@@ -19,6 +19,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: AppColors.background,
         primaryColor: AppColors.cyan,
+        // Fuente Poppins en toda la app (si los .ttf no están, Flutter usa
+        // la fuente por defecto sin romper nada).
+        textTheme: ThemeData.dark().textTheme.apply(fontFamily: 'Poppins'),
         colorScheme: const ColorScheme.dark(
           primary: AppColors.cyan,
           secondary: AppColors.cyan,

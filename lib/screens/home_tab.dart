@@ -5,8 +5,8 @@ import '../theme/app_colors.dart';
 import '../widgets/cwe_logo.dart';
 import '../widgets/product_card.dart';
 
-// Pestaña Inicio: buscador, filtro y cuadrícula de productos
-// (correcciones de los errores E-07 y E-08).
+// Pestaña Inicio, buscador, filtro y cuadrícula de productos
+// son correcciones de los errores E-07 y E-08.
 
 class HomeTab extends StatefulWidget {
   final void Function(Product product) onAdd;
@@ -145,30 +145,13 @@ class _HomeTabState extends State<HomeTab> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Cabecera con logo y buscador
+        // Header: banner horizontal "Conecta con la tierra" (imagen #3).
+        const _HeaderBanner(),
+        // Buscador y filtros
         Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.fromLTRB(16, 12, 16, 16),
           child: Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  // Logo del PDF si existe; si no, el texto CWE con degradado.
-                  Image.asset(
-                    'assets/images/logo_cwe.png',
-                    height: 34,
-                    errorBuilder: (context, error, stackTrace) =>
-                        const CweLogo(),
-                  ),
-                  const SizedBox(width: 8),
-                  const _ColombiaFlag(),
-                ],
-              ),
-              const Text(
-                'Conecta con la tierra',
-                style: TextStyle(color: Colors.white54, fontSize: 11),
-              ),
-              const SizedBox(height: 16),
               Row(
                 children: [
                   Expanded(
@@ -245,7 +228,7 @@ class _HomeTabState extends State<HomeTab> {
             scrollDirection: Axis.horizontal,
             padding: const EdgeInsets.symmetric(horizontal: 16),
             itemCount: categories.length,
-            separatorBuilder: (_, _) => const SizedBox(width: 8),
+            separatorBuilder: (_, __) => const SizedBox(width: 8),
             itemBuilder: (context, index) {
               final cat = categories[index];
               final selected = _category == cat;
@@ -393,7 +376,44 @@ class _ChipGroup extends StatelessWidget {
   }
 }
 
-// Banderita de Colombia como la del mockup (esquina superior).
+// Header: banner horizontal del catálogo.
+// Si la imagen falla, muestra un respaldo con el logo y el eslogan.
+class _HeaderBanner extends StatelessWidget {
+  const _HeaderBanner();
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Image.asset(
+          'assets/images/header_cwe.png',
+          width: double.infinity,
+          height: 120,
+          fit: BoxFit.cover,
+          errorBuilder: (context, error, stackTrace) => Container(
+            width: double.infinity,
+            height: 110,
+            color: AppColors.surface,
+            alignment: Alignment.center,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                CweLogo(fontSize: 34),
+                Text(
+                  'Conecta con la tierra',
+                  style: TextStyle(color: Colors.white54, fontSize: 11),
+                ),
+              ],
+            ),
+          ),
+        ),
+        const Positioned(top: 10, right: 12, child: _ColombiaFlag()),
+      ],
+    );
+  }
+}
+
+// Banderita de Colombia (esquina superior).
 class _ColombiaFlag extends StatelessWidget {
   const _ColombiaFlag();
 
@@ -416,7 +436,7 @@ class _ColombiaFlag extends StatelessWidget {
   }
 }
 
-// Banner "Insight" del mockup (Figura 5).
+// "Insight" (Figura 5).
 class _InsightBanner extends StatelessWidget {
   const _InsightBanner();
 

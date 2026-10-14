@@ -26,7 +26,6 @@ class Product {
   String get autoIconPath => 'assets/icons/${slug(name)}.png';
 
   /// Emoji representativo según la categoría. Sirve como respaldo visual
-  /// mientras el equipo agrega las imágenes/íconos reales a assets/.
   String get categoryEmoji => categoryEmojiFor(category);
 }
 
@@ -77,7 +76,7 @@ class Order {
   });
 }
 
-/// Costo de envío fijo del prototipo (mockup "Revisar compra").
+/// Costo de envío fijo del prototipo.
 const int shippingCost = 5000;
 
 /// Convierte 8900 en "$8.900 COP".
