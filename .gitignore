@@ -57,3 +57,6 @@ env/
 __pycache__/
 *.pyc
 *.db
+
+# Archivos APK (pesados; se generan con flutter build apk, no se suben)
+*.apk

@@ -1,9 +1,9 @@
 import '../models/product.dart';
 
 /// Catálogo de ejemplo del prototipo CWE.
-/// (Más adelantese busca implementar esta lista en el backend)
+/// (Más adelantese busca implementar esta lista en el backend.
 ///
-///Si se agrega la foto, la tarjeta muestra automáticamente el ícono/emoji
+///Si no agregas la foto, la tarjeta muestra automáticamente el ícono/emoji
 ///de la categoría, así que la app nunca se ve rota.
 
 const List<Product> sampleProducts = [

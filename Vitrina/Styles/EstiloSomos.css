@@ -1,0 +1,351 @@
+html {
+    scroll-behavior: smooth;
+}
+*{
+
+    box-sizing: border-box;
+    font-family: garamond;
+}
+body{
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding-top: 90px;
+    background-color: #0a0e14;
+    color: #ffffff;
+}
+.container{
+    max-width: 1400px;
+    margin: auto;
+}
+
+.color-acento{ color:rgb(75, 75, 75); }
+
+header{
+    background-color: #0a0e14;
+    border-bottom: 1px solid #263040;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    
+}
+
+header .logo{
+    margin: 0;
+    padding: 30px 35px;
+    font-weight: bold;
+    color: #00e5ff;
+    font-size: 2em;
+}
+
+header .container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header nav{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding-bottom: 25px;
+}
+
+header a{
+    padding: 5px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+}
+
+header a:hover{
+    color: #00e5ff;
+}
+@media (min-width: 850px){
+    header{
+        position: fixed;
+        width: 100%;
+    }
+}
+    header .container{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    header nav{
+        flex-direction: row;
+        padding-bottom: 0;
+        padding-right: 20px;
+    }
+/* ---------- PORTADA ---------- */
+.portada-saber {
+    text-align: center;
+    padding: 80px 20px 60px;
+    background-color: #0a0e14;
+    border-bottom: 1px solid #263040;
+}
+
+.portada-saber h1 {
+    font-size: 3.2em;
+    margin: 0 0 20px;
+    color: #ffffff;
+}
+
+.portada-saber p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.4em;
+    line-height: 1.6;
+    color: #9aa6b8;
+}
+/* Contenedor externo para dar espacio alrededor */
+.seccion-presentacion {
+    display: flex;
+    justify-content: center; /* Centra el cuadro gris en la pantalla */
+    padding: 60px 20px;       /* Espacio arriba y abajo de la sección */
+    background-color: #0a0e14; /* Fondo de la página */
+}
+
+/* El cuadro de fondo gris con el texto bonito */
+.cuadro-gris-fondo {
+    max-width: 800px;          /* Evita que el texto se estire demasiado y canse la vista */
+    width: 100%;
+    background-color: #131923;
+    border: 1px solid #263040; /* Color gris claro y moderno para el fondo */
+    padding: 40px;             /* Espacio interno entre el borde gris y el texto */
+    border-radius: 12px;       /* Bordes suavemente redondeados */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Una sombra casi invisible para darle elegancia */
+    text-align: center;        /* Centra el título y el párrafo */
+}
+
+/* Estilo para el título interno */
+.cuadro-gris-fondo h2 {
+    font-size: 28px;
+    color: #00e5ff;            /* Acento cian */
+    margin-bottom: 20px;       /* Espacio entre el título y el texto de abajo */
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* Estilo para el párrafo principal */
+.cuadro-gris-fondo p {
+    font-size: 17px;
+    line-height: 1.8;          /* Espaciado entre líneas para que sea muy fácil de leer */
+    color: #9aa6b8;            /* Gris intermedio para que no sea un texto pesado */
+}
+
+/* Resaltado para las palabras clave */
+.cuadro-gris-fondo strong {
+    color: #ffffff;            /* Resalta más las palabras importantes */
+    font-weight: 600;
+}
+
+/* Contenedor general de la sección de servicios */
+.seccion-servicios {
+    background-color: #0f141c;   /* Fondo oscuro como la parte inferior de tu referencia */
+    padding: 80px 40px;
+    text-align: center;
+}
+
+/* Título principal de la sección */
+.titulo-servicios {
+    color: #00e5ff;              /* Un tono dorado/bronce elegante inspirado en tu imagen */
+    font-size: 24px;
+    letter-spacing: 3px;
+    margin-bottom: 50px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+/* Contenedor flexible para alinear las 3 tarjetas de lado a lado */
+.contenedor-tarjetas {
+    display: flex;
+    justify-content: center;
+    gap: 30px;                   /* Espacio de separación entre cada tarjeta */
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;             /* Si la pantalla es pequeña, se acomodan solas hacia abajo */
+}
+
+/* Estilo individual de cada columna/tarjeta */
+.tarjeta-servicio {
+    flex: 1;
+    min-width: 280px;            /* Evita que se encojan demasiado */
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ¡La magia del Arco! Corta la parte superior de la imagen de forma curva */
+.marco-arco {
+    width: 100%;
+    height: 380px;               /* Altura de la fotografía */
+    border-radius: 180px 180px 0 0; /* Curva los dos bordes de arriba y deja planos los de abajo */
+    overflow: hidden;            /* Obliga a la imagen a tomar la forma curva */
+    background-color: #1a2230;   /* Fondo gris oscuro de respaldo si no hay foto */
+    margin-bottom: 20px;
+}
+
+/* Control de la imagen dentro del arco */
+.marco-arco img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;           /* Ajusta la foto sin deformarla */
+    transition: transform 0.5s ease; /* Efecto suave si decides pasar el mouse */
+}
+
+/* Efecto elegante opcional al pasar el mouse por encima */
+.tarjeta-servicio:hover .marco-arco img {
+    transform: scale(1.05);      /* La imagen se acerca ligeramente */
+}
+
+/* Textos informativos debajo de cada foto */
+.contenido-tarjeta h3 {
+    color: #ffffff;
+    font-size: 20px;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+.contenido-tarjeta p {
+    color: #9aa6b8;              /* Gris claro para el texto descriptivo */
+    font-size: 14px;
+    line-height: 1.6;
+    text-align: center;
+}
+/* Contenedor general de la sección corporativa */
+.seccion-corporativa {
+    padding: 60px 20px;
+    background-color: #0a0e14;
+    display: flex;
+    justify-content: center;
+}
+
+/* La rejilla (Grid) estilo la imagen de referencia */
+.cuadrante-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas iguales arriba */
+    gap: 20px;                     /* Separación entre bloques */
+    max-width: 1000px;
+    width: 100%;
+}
+
+/* Estilo base para cada bloque individual */
+.bloque-corporativo {
+    position: relative;
+    padding: 40px 30px;
+    border-radius: 12px;
+    overflow: hidden;
+    color: #ffffff;                /* Texto blanco para contrastar */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Colores personalizados inspirados en un estilo corporativo premium */
+.bloque-vision {
+    background-color: #131923;
+    border: 1px solid #263040;
+    border-left: 4px solid #00e5ff;    /* Gris azulado oscuro */
+    min-height: 250px;
+}
+
+.bloque-mision {
+    background-color: #1a2230;
+    border: 1px solid #263040;
+    border-left: 4px solid #00e5ff;    /* Un tono más oscuro */
+    min-height: 250px;
+}
+
+
+/* Estilo para los textos internos */
+.bloque-corporativo h2 {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.bloque-corporativo p {
+    font-size: 15px;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+
+/* Esos iconos gigantes transparentes de fondo que se ven en tu imagen */
+.icono-fondo {
+    position: absolute;
+    bottom: -20px;
+    right: -10px;
+    font-size: 110px;
+    opacity: 0.1;                 /* Lo hace súper sutil */
+    pointer-events: none;
+}
+
+/* Responsivo: Si se ve en celular, todo se pone en una sola columna */
+@media (max-width: 768px) {
+    .cuadrante-grid {
+        grid-template-columns: 1fr;
+    }
+}
+.footer {
+    background-color: #131923;
+    border-top: 1px solid #263040;
+    color: white;
+    padding: 40px 60px 15px;
+}
+
+.footer-contenido {
+    display: flex;
+    justify-content: space-around;
+    gap: 40px;
+}
+
+.footer-seccion {
+    width: 30%;
+}
+
+.footer-seccion h3 {
+    margin-bottom: 15px;
+}
+
+.footer-seccion p {
+    line-height: 1.6;
+}
+
+.redes-sociales {
+    display: flex;
+    gap: 15px;
+}
+
+.redes-sociales img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.redes-sociales img:hover {
+    transform: scale(1.1);
+}
+
+.footer-inferior {
+    text-align: center;
+    border-top: 1px solid #263040;
+    margin-top: 30px;
+    padding-top: 15px;
+}
+.footer-inferior span {
+    font-size: 13px;
+    font-weight: bold;
+}
+li{ font-size: 1.25em;
+    padding: 10px;}
+
+.footer-seccion ul{
+    margin: 0;
+    padding-left: 20px;
+}

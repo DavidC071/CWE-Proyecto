@@ -76,8 +76,11 @@ class Order {
   });
 }
 
-/// Costo de envío fijo del prototipo.
-const int shippingCost = 5000;
+/// Porcentaje de servicio de la plataforma (según el documento del proyecto).
+const double servicePercent = 0.09; // 9%
+
+/// Calcula el valor del servicio (9% del subtotal), redondeado a pesos enteros.
+int serviceFee(int subtotal) => (subtotal * servicePercent).round();
 
 /// Convierte 8900 en "$8.900 COP".
 String formatCop(int value) {

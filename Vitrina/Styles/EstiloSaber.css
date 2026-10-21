@@ -1,0 +1,471 @@
+/* ===== Estilo de la página "Saber más" (misma paleta que la app) ===== */
+
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: garamond;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding-top: 90px;            /* espacio para el header fijo */
+    background-color: #0a0e14;    /* azul muy oscuro de la app */
+    color: #ffffff;
+}
+
+.container {
+    max-width: 1400px;
+    margin: auto;
+}
+
+/* ---------- HEADER ---------- */
+header {
+    background-color: #0a0e14;
+    border-bottom: 1px solid #263040;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+header .logo {
+    margin: 0;
+    padding: 30px 35px;
+    font-weight: bold;
+    color: #00e5ff;               /* cian */
+    font-size: 2em;
+}
+
+header .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header nav {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    padding-right: 20px;
+}
+
+header a {
+    padding: 5px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+}
+
+header a:hover {
+    color: #00e5ff;
+}
+
+/* ---------- PORTADA ---------- */
+.portada-saber {
+    text-align: center;
+    padding: 80px 20px 60px;
+    background-color: #0a0e14;
+    border-bottom: 1px solid #263040;
+}
+
+.portada-saber h1 {
+    font-size: 3.2em;
+    margin: 0 0 20px;
+    color: #ffffff;
+}
+
+.portada-saber p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.4em;
+    line-height: 1.6;
+    color: #9aa6b8;
+}
+
+/* ---------- QUÉ ES CWE ---------- */
+.seccion-que-es {
+    display: flex;
+    justify-content: center;
+    padding: 60px 20px;
+    background-color: #0a0e14;
+}
+
+.cuadro-que-es {
+    max-width: 800px;
+    width: 100%;
+    background-color: #131923;
+    border: 1px solid #263040;
+    border-left: 4px solid #00e5ff;
+    border-radius: 12px;
+    padding: 40px;
+    text-align: center;
+}
+
+.cuadro-que-es h2 {
+    font-size: 2em;
+    color: #00e5ff;
+    margin: 0 0 20px;
+}
+
+.cuadro-que-es p {
+    font-size: 1.3em;
+    line-height: 1.8;
+    color: #9aa6b8;
+    margin: 0;
+}
+
+.cuadro-que-es strong {
+    color: #ffffff;
+}
+
+/* ---------- PASOS ---------- */
+.seccion-pasos {
+    background-color: #0f141c;
+    padding: 80px 40px;
+    text-align: center;
+}
+
+.titulo-pasos {
+    color: #00e5ff;
+    font-size: 1.6em;
+    letter-spacing: 3px;
+    margin: 0 0 50px;
+    font-weight: 400;
+}
+
+.contenedor-pasos {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.paso {
+    flex: 1;
+    min-width: 260px;
+    max-width: 350px;
+    background-color: #131923;
+    border: 1px solid #263040;
+    border-radius: 16px;
+    padding: 35px 28px;
+}
+
+.numero-paso {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #00e5ff;
+    color: #00262c;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 18px;
+}
+
+.paso h3 {
+    color: #ffffff;
+    font-size: 1.5em;
+    margin: 0 0 12px;
+}
+
+.paso p {
+    color: #9aa6b8;
+    font-size: 1.15em;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* ---------- CATEGORÍAS Y BENEFICIOS ---------- */
+.seccion-beneficios {
+    background-color: #0a0e14;
+    padding: 80px 40px;
+    text-align: center;
+}
+
+.titulo-beneficios {
+    color: #00e5ff;
+    font-size: 1.6em;
+    letter-spacing: 3px;
+    margin: 0 0 30px;
+    font-weight: 400;
+}
+
+.chips {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 50px;
+}
+
+.chip {
+    padding: 8px 22px;
+    border-radius: 10px;
+    background-color: #131923;
+    border: 1px solid #263040;
+    color: #ffffff;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+.contenedor-imagen {
+    width: 350px;                /* Define el ancho (puedes cambiarlo a tu gusto) */
+    height: 350px;               /* Debe ser igual al ancho para que sea un cuadrado perfecto */
+    overflow: hidden;           /* Corta cualquier parte de la imagen que intente salirse del círculo */
+    background-color: #131923;  /* Fondo gris de respaldo */  
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px auto;
+    
+
+}
+
+/* 2. Ajusta la imagen dentro del contenedor */
+.contenedor-imagen img {
+    width: 100%;                /* Ocupa todo el ancho del contenedor */
+    height: 100%;               /* Ocupa todo el alto del contenedor */
+    object-fit: contain;        /* Muestra el logo completo sin deformarlo ni recortarlo */
+}
+
+.contenedor-beneficios {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.beneficio {
+    flex: 1;
+    min-width: 260px;
+    max-width: 350px;
+    background-color: #1a2230;
+    border: 1px solid #263040;
+    border-radius: 16px;
+    padding: 35px 28px;
+}
+
+.beneficio h3 {
+    color: #ffffff;
+    font-size: 1.5em;
+    margin: 0 0 12px;
+}
+
+.beneficio p {
+    color: #9aa6b8;
+    font-size: 1.15em;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.icono-beneficio {
+    display: block;
+    font-size: 2.2em;
+    margin-bottom: 12px;
+}
+
+.etiqueta-fresco {
+    display: inline-block;
+    padding: 3px 14px;
+    border-radius: 6px;
+    background-color: #17352a;    /* verde de la etiqueta "Fresco" de la app */
+    color: #5be39a;
+    font-size: 1em;
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+
+/* ---------- PREGUNTAS FRECUENTES ---------- */
+.seccion-preguntas {
+    background-color: #0f141c;
+    padding: 80px 20px;
+}
+
+.titulo-preguntas {
+    text-align: center;
+    color: #ffffff;
+    font-size: 2em;
+    margin: 0 0 40px;
+}
+
+.contenedor-preguntas {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+details {
+    background-color: #131923;
+    border: 1px solid #263040;
+    border-radius: 12px;
+    padding: 18px 24px;
+    margin-bottom: 14px;
+}
+
+summary {
+    cursor: pointer;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+details[open] summary {
+    color: #00e5ff;
+    margin-bottom: 10px;
+}
+
+details p {
+    margin: 0;
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: #9aa6b8;
+}
+
+/* ---------- LLAMADO FINAL ---------- */
+.seccion-final {
+    display: flex;
+    justify-content: center;
+    padding: 70px 20px;
+    background-color: #0a0e14;
+}
+
+.cuadro-final {
+    max-width: 800px;
+    width: 100%;
+    text-align: center;
+    background-color: #131923;
+    border: 1px solid #263040;
+    border-radius: 24px;
+    padding: 50px 30px;
+}
+
+.cuadro-final h2 {
+    font-size: 2em;
+    color: #ffffff;
+    margin: 0 0 12px;
+}
+
+.cuadro-final p {
+    font-size: 1.3em;
+    color: #9aa6b8;
+    margin: 0 0 28px;
+}
+
+.boton-final {
+    display: inline-block;
+    padding: 12px 36px;
+    border-radius: 999px;
+    background-color: #00e5ff;
+    color: #00262c;
+    font-size: 1.3em;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.boton-final:hover {
+    background-color: #00b8d4;
+}
+
+/* ---------- FOOTER ---------- */
+.footer {
+    background-color: #131923;
+    border-top: 1px solid #263040;
+    color: white;
+    padding: 40px 60px 15px;
+}
+
+.footer-contenido {
+    display: flex;
+    justify-content: space-around;
+    gap: 40px;
+}
+
+.footer-seccion {
+    width: 30%;
+}
+
+.footer-seccion h3 {
+    margin-bottom: 15px;
+    color: #00e5ff;
+}
+
+.footer-seccion p {
+    line-height: 1.6;
+    font-size: 1.25em;
+}
+
+.footer-seccion ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.footer-seccion li {
+    font-size: 1.25em;
+    padding: 10px;
+}
+
+.redes-sociales {
+    display: flex;
+    gap: 15px;
+}
+
+.redes-sociales img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.redes-sociales img:hover {
+    transform: scale(1.1);
+}
+
+.footer-inferior {
+    text-align: center;
+    border-top: 1px solid #263040;
+    margin-top: 30px;
+    padding-top: 15px;
+}
+
+.footer-inferior span {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 850px) {
+    body {
+        padding-top: 150px;
+    }
+
+    header .container {
+        flex-direction: column;
+    }
+
+    header nav {
+        padding-right: 0;
+        padding-bottom: 10px;
+    }
+
+    .portada-saber h1 {
+        font-size: 2.2em;
+    }
+
+    .footer-contenido {
+        flex-direction: column;
+    }
+
+    .footer-seccion {
+        width: 100%;
+    }
+}

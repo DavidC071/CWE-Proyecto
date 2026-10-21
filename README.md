@@ -1,17 +1,36 @@
-# cwe
+# 🌱 CWE — Conecta con la Tierra
 
-A new Flutter project.
+App móvil que conecta a **productores agrícolas (campesinos)** con
+**compradores de la ciudad**. Incluye catálogo de frutas y verduras,
+login/registro, roles diferenciados (comprador 🔵 / vendedor 🟢) y un backend
+propio.
 
-## Getting Started
+Hecho con **Flutter/Dart** (app), **Python/FastAPI** (backend) y **PHP** (vitrina web).
 
-This project is a starting point for a Flutter application.
+## 📚 Documentación
 
-A few resources to get you started if this is your first Flutter project:
+Toda la información del proyecto está reunida en una sola guía:
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+### 👉 [`GUIA_COMPLETA_CWE.md`](GUIA_COMPLETA_CWE.md)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Ahí encuentras: qué es el proyecto, la estructura del código, cómo correrlo
+(desde cero, en Chrome y en el celular), el apartado del vendedor, y el guion y
+las chuletas para la exposición.
+
+Guías específicas dentro de cada carpeta:
+- `backend_cwe/README.md` — detalle del backend
+- `Vitrina/README.md` — cómo abrir la página web con XAMPP
+
+## ⚡ Arranque rápido (si ya tienes Flutter y Python)
+
+```bash
+# Backend (Terminal 1)
+cd backend_cwe
+python -m venv venv && venv\Scripts\activate
+pip install -r requirements.txt
+uvicorn main:app --reload
+
+# App (Terminal 2)
+flutter pub get
+flutter run -d chrome
+```

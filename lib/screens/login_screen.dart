@@ -47,7 +47,11 @@ class _LoginScreenState extends State<LoginScreen> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (_) => CatalogScreen(userName: usuario['nombre'] ?? user),
+          builder: (_) => CatalogScreen(
+            userName: usuario['nombre'] ?? user,
+            // Rol del usuario: 'consumidor' (comprador) o 'productor' (vendedor).
+            tipoUsuario: usuario['tipo_usuario'] ?? 'consumidor',
+          ),
         ),
       );
     } on ApiException catch (e) {

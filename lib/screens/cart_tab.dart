@@ -38,7 +38,8 @@ class CartTab extends StatelessWidget {
 
     var subtotal = 0;
     cart.forEach((product, qty) => subtotal += product.price * qty);
-    final total = subtotal + shippingCost;
+    final servicio = serviceFee(subtotal);
+    final total = subtotal + servicio;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -76,7 +77,7 @@ class CartTab extends StatelessWidget {
           child: Column(
             children: [
               _SummaryRow(label: 'Subtotal', value: formatCop(subtotal)),
-              _SummaryRow(label: 'Envío', value: formatCop(shippingCost)),
+              _SummaryRow(label: 'Servicio (9%)', value: formatCop(servicio)),
               _SummaryRow(
                 label: 'Total',
                 value: formatCop(total),
