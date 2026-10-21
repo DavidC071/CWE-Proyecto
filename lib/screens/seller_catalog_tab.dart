@@ -71,7 +71,7 @@ class _SellerCatalogTabState extends State<SellerCatalogTab> {
             children: [
               const SizedBox(height: 8),
               Text(
-                'Hola, ${widget.userName} 🧑‍🌾',
+                'Hola, ${widget.userName} ',
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 18,

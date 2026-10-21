@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/login_screen.dart';
+import 'screens/splash_screen.dart';
 import 'theme/app_colors.dart';
 
 // Arranca la aplicación con el tema oscuro de CWE.
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
           surface: AppColors.surface,
         ),
       ),
-      home: const LoginScreen(),
+      home: const SplashScreen(),
     );
   }
 }
