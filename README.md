@@ -1,4 +1,16 @@
+Conecta con la Tierra
 
+App móvil que conecta a **productores agrícolas (campesinos)** con
+**compradores de la ciudad**. Incluye catálogo de frutas y verduras,
+login/registro, roles diferenciados (comprador 🔵 / vendedor 🟢) y un backend
+propio.
+
+Hecho con **Flutter/Dart** (app), **Python/FastAPI** (backend) y **PHP** (vitrina web).
+
+
+Arranque rápido (si ya tienes Flutter y Python)
+
+```bash
 # Backend (Terminal 1)
 cd backend_cwe
 python -m venv venv && venv\Scripts\activate
