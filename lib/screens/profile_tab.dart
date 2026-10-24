@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../theme/app_colors.dart';
 import '../theme/role_theme.dart';
+import 'policies_screen.dart';
 
 // Pestaña Perfil, datos básicos y cierre de sesión.
 
@@ -73,6 +74,21 @@ class ProfileTab extends StatelessWidget {
               ),
               const SizedBox(height: 14),
             ],
+
+            // Acceso a los términos y políticas desde el perfil.
+            TextButton.icon(
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const PoliciesScreen()),
+              ),
+              icon: const Icon(Icons.description_outlined,
+                  color: Colors.white54, size: 18),
+              label: const Text(
+                'Términos y políticas',
+                style: TextStyle(color: Colors.white54),
+              ),
+            ),
+            const SizedBox(height: 8),
 
             OutlinedButton.icon(
               style: OutlinedButton.styleFrom(

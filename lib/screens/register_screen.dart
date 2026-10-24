@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../services/api_service.dart';
 import '../theme/app_colors.dart';
 import '../widgets/cwe_logo.dart';
+import 'policies_screen.dart';
 
 // Pantalla de Registro la cual crea un usuario nuevo en la base de datos a través
 // del backend, al terminar, vuelve al login para que el usuario inicie sesión.
@@ -254,6 +255,36 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               ),
                             ),
                     ),
+                  ),
+                  const SizedBox(height: 16),
+
+                  // Aviso de aceptación de términos y políticas.
+                  Wrap(
+                    alignment: WrapAlignment.center,
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: [
+                      const Text(
+                        'Al registrarte aceptas nuestros ',
+                        style: TextStyle(color: Colors.white54, fontSize: 12),
+                      ),
+                      GestureDetector(
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => const PoliciesScreen(),
+                          ),
+                        ),
+                        child: const Text(
+                          'Términos y Políticas',
+                          style: TextStyle(
+                            color: AppColors.cyan,
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                            decoration: TextDecoration.underline,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),

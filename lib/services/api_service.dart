@@ -23,7 +23,7 @@ class ApiService {
 
   /// La IP de tu computador en la red WiFi (solo importa si _celularFisico=true).
   /// El PC y el celular deben estar en la MISMA red WiFi.
-  static const String _ipDeTuPC = '192.168.81.47';
+  static const String _ipDeTuPC = '10.127.187.153';
 
   /// Puerto donde corre el backend (uvicorn usa 8000 por defecto).
   static const int _puerto = 8000;

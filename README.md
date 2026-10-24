@@ -1,29 +1,4 @@
-# 🌱 CWE — Conecta con la Tierra
 
-App móvil que conecta a **productores agrícolas (campesinos)** con
-**compradores de la ciudad**. Incluye catálogo de frutas y verduras,
-login/registro, roles diferenciados (comprador 🔵 / vendedor 🟢) y un backend
-propio.
-
-Hecho con **Flutter/Dart** (app), **Python/FastAPI** (backend) y **PHP** (vitrina web).
-
-## 📚 Documentación
-
-Toda la información del proyecto está reunida en una sola guía:
-
-### 👉 [`GUIA_COMPLETA_CWE.md`](GUIA_COMPLETA_CWE.md)
-
-Ahí encuentras: qué es el proyecto, la estructura del código, cómo correrlo
-(desde cero, en Chrome y en el celular), el apartado del vendedor, y el guion y
-las chuletas para la exposición.
-
-Guías específicas dentro de cada carpeta:
-- `backend_cwe/README.md` — detalle del backend
-- `Vitrina/README.md` — cómo abrir la página web con XAMPP
-
-## ⚡ Arranque rápido (si ya tienes Flutter y Python)
-
-```bash
 # Backend (Terminal 1)
 cd backend_cwe
 python -m venv venv && venv\Scripts\activate
@@ -34,3 +9,12 @@ uvicorn main:app --reload
 flutter pub get
 flutter run -d chrome
 ```
+# Ver Bases de datos(Terminal 3)
+cd C:\Users\David\Desktop\CWE-P\backend_cwe
+C:\sqlite\sqlite3.exe cwe.db
+
+(.tables)
+
+.headers on // Que se vea de una buena manera
+.mode column
+SELECT * FROM usuarios;
